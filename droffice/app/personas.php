@@ -1,4 +1,4 @@
-<?php 
+<?php
 $date_sum = date("Y-m-d\TH:i:s",time());
 $treinta_dias = strtotime($date_sum."+ 30 days");
 $treinta_dias = date("Y-m-d\TH:i:s",$treinta_dias);
@@ -10,18 +10,18 @@ if($ismobile) {
 } else {
 	$ajustar = 'style="width:40%;"';
 }
-	
-	
+
+
 ?>
 
-	
-<script src="../js/jquery.js"></script>	
-<script src="../js/bootstrap.min.js"></script>	
-<script src="../js/jqueryautocompletarui.js"></script> 	
 
-<link rel="stylesheet" href="../css/jquery-ui-1.10.3.custom.min.css" />	
-<link rel="stylesheet" href="../css/bootstrapN.css"/>		
-<link rel="stylesheet" href="../css/formulario.css">         
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jqueryautocompletarui.js"></script>
+
+<link rel="stylesheet" href="../css/jquery-ui-1.10.3.custom.min.css" />
+<link rel="stylesheet" href="../css/bootstrapN.css"/>
+<link rel="stylesheet" href="../css/formulario.css">
 
 
 
@@ -48,57 +48,75 @@ if($ismobile) {
      <input class="caja_datos"  style="width:100%;" min="0" step="1"  autofocus oninput="validity.valid||(value='');" type="number" id="documento" placeholder="CEDULA"/>
   </div>
 
-		
+
   <div style="float:left; width:60%; padding:1%">
    <em>PAIS</em>
     <select id="pais" required class="caja_datos" type="text" style="width:100%">
 	        <option value="PARAGUAY">PARAGUAY</option>
             <option value="ARGENTINA">ARGENTINA</option>
-            <option value="BRASIL">BRASIL</option>            
-            <option value="URUGUAY">URUGUAY</option>            		
+            <option value="BRASIL">BRASIL</option>
+            <option value="URUGUAY">URUGUAY</option>
     </select>
-  </div>		
-		
-		
+  </div>
+
+
 
   <div style="float:left; width:100%; padding:1%">
    <em>NOMBRE Y APELLIDO</em>
      <input class="caja_datos"  style="width:100%;text-transform:uppercase;" type="text" id="nombre" name="name" placeholder="NOMBRE Y APELLIDO" />
   </div>
 
+	<div class="contenedor_datos">
+
+  <div style="float:left; width:40%; padding:1%; ">
+   <em>USUARIO</em>
+     <input class="caja_datos"  style="width:100%;" min="0" step="1"  autofocus oninput="validity.valid||(value='');" type="number" id="usuario" placeholder="USUARIO"/>
+  </div>
+
+
+  <div style="float:left; width:60%; padding:1%">
+   <em>ROL</em>
+    <select id="pais" required class="caja_datos" type="text" style="width:100%">
+	        <option value="PARAGUAY">PARAGUAY</option>
+            <option value="ARGENTINA">ARGENTINA</option>
+            <option value="BRASIL">BRASIL</option>
+            <option value="URUGUAY">URUGUAY</option>
+    </select>
+  </div>
+
 
 	<div style="float:left; width:50%; padding:1%;" >
 	<em >FECHA DE NACIMIENTO</em>
 	 <input class="caja_datos"  style="width:100%; text-transform:uppercase;" type="date"  id="fecha_nac"  name='bday' value="<?php echo date("Y-m-d",time()); ?>"  placeholder="FECHA DE NACIMIENTO"/>
-	</div>		
-		
-		
+	</div>
+
+
   <div style="float:left; width:50%; padding:1%">
    <em>SEXO</em>
     <select id="sexo" required class="caja_datos" type="text" style="width:100%">
 	        <option value="MASCULINO">MASCULINO</option>
-            <option value="FEMENINO">FEMENINO</option>		
+            <option value="FEMENINO">FEMENINO</option>
     </select>
   </div>
-		
-		
-		
-		
+
+
+
+
   <div style="float:left; width:100%; padding:1%">
    <em>TELEFONO WHATSAPP</em>
      <input class="caja_datos"  style="width:100%;" type="number"  id="telefono"  name='phone' placeholder="TELEFONO WHATSAPP"/>
-  </div>		
+  </div>
 
-		
+
   <div style="float:left; width:100%; padding:1%">
    <em>EMAIL</em>
      <input class="caja_datos"  style="width:100%;" type="text"  id="email" name='email' placeholder="EMAIL"/>
-  </div>	
-		
+  </div>
 
-		
-  <div id="pie" style="float:left; width:100%; padding:10px; text-align:center"><button id="guardar_persona" class="btn btn-large btn-primary" onClick="guardar_persona();" >GUARDAR</button>	
-	</div>		
+
+
+  <div id="pie" style="float:left; width:100%; padding:10px; text-align:center"><button id="guardar_persona" class="btn btn-large btn-primary" onClick="guardar_persona();" >GUARDAR</button>
+	</div>
 
 
 </div>
@@ -130,17 +148,17 @@ function guardar_persona(){
 
 
 
-	
+
 		if($('#documento').val() == '' && $('#nombre').val() == ''){
 			alert('DEBE INGRESAR DOCUMENTO Y NOMBRE');
-			return false;		
-		}	
-		
+			return false;
+		}
 
-				
+
+
 			    $('#guardar_persona').hide();
-				var respuesta = '';					
-			
+				var respuesta = '';
+
 				$.ajax({
 					data:{
 					    documento: $('#documento').val(),
@@ -150,52 +168,52 @@ function guardar_persona(){
 						sexo: $('#sexo').val(),
 						telefono: $('#telefono').val(),
 						email: $('#email').val()
-						
+
 					},
-					
+
 					type: "POST",
 					dataType: "json",
 					url: "guardar_persona.php",
 
 					success: function(data){
-					
+
 								if(data.length > 0){
-										$.each(data, function(i,item){								
-										respuesta = item.respuesta;							
+										$.each(data, function(i,item){
+										respuesta = item.respuesta;
 								})
 
-						       
+
 							   if(respuesta=='1'){
-								   
+
 
 									   $("#documento").val('');
 									   $("#pais").val('PARAGUAY');
-								       $("#nombre").val('');						   
+								       $("#nombre").val('');
 								       //$("#fecha_nac").val('');
 									   $("#sexo").val('');
 									   $("#telefono").val('');
 									   $("#email").val('');
-								   
-								       $('#guardar_persona').show(); 						
+
+								       $('#guardar_persona').show();
 								       $("#documento").focus();
-								       
+
 								   	   alert('SE HA GUARDARDO');
-								       
-								   
-								}else{							
-									
-									   alert('ERROR AL GUARDAR. INTENTE DE NUEVO');		
+
+
+								}else{
+
+									   alert('ERROR AL GUARDAR. INTENTE DE NUEVO');
 									   $('#guardar_persona').show();
-									   
+
 								}
-	
+
 							}
 					}
-				})				
-		
+				})
+
 
 };
-	
+
 //guardar----------------------------------------------------
 
 

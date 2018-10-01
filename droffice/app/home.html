@@ -2,43 +2,43 @@
 
 <html ng-app="ionicApp" lang="en">
 <head>
-	
+
 	<title>DR OFFICE</title>
 
 	<meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-	<meta name="mobile-web-app-capable" content="yes">    
+	<meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#387ef5">
         <meta name="MobileOptimized" content="width" />
 	<meta name="HandheldFriendly" content="true" />
-	<link rel="manifest" href="manifest.json">
-	<link rel="icon" type="image/png" href="images/logo_192x192.png" />
-        <link rel="shortcut icon" sizes="192x192"  href="images/logo_192x192.png">
+	<link rel="manifest" href="../manifest.json">
+	<link rel="icon" type="../image/png" href="../images/logo_192x192.png" />
+        <link rel="shortcut icon" sizes="192x192"  href="../images/logo_192x192.png">
 
 
-	<script src="js/fullscreen.js"></script>	
-	<script src="js/ionic.bundle.js"></script>
-	
+	<script src="../js/fullscreen.js"></script>
+	<script src="../js/ionic.bundle.js"></script>
 
-	<link rel="stylesheet" href="css/tabSlideBox.css">
-	<link rel="stylesheet" href="css/ionic.css">
-	<link rel="stylesheet" href="css/style.css">	 
-	  
-	  
-	
+../
+	<link rel="stylesheet" href="../css/tabSlideBox.css">
+	<link rel="stylesheet" href="../css/ionic.css">
+	<link rel="stylesheet" href="../css/style.css">
 
-		
-	
+
+
+
+
+
   </head>
 
-	  
+
   <body style="background-color:#1795FF">
-	  
+
 	  <!--<input type="button" onClick="document.documentElement.webkitRequestFullscreen();" value="FULLSCREEN">-->
-	  
+
 
     <ion-nav-view>DR OFFICE </ion-nav-view>
-	  
+
 
     <script id="templates/event-menu.html" type="text/ng-template">
       <ion-side-menus enable-menu-with-back-views="false">
@@ -55,7 +55,7 @@
           </ion-nav-bar>
 
           <ion-nav-view name="menuContent"></ion-nav-view>
-        </ion-side-menu-content> 
+        </ion-side-menu-content>
 
         <ion-side-menu side="left">
           <ion-header-bar class="bar-assertive">
@@ -65,13 +65,14 @@
             <ul class="list">
               <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
               <a href="#/event/inicio" class="item" menu-close>INCIO</a>
+							<a href="#/event/inicio" class="item" menu-close>ROLES</a>
 			  <a href="#/event/personas" class="item" menu-close>PERSONAS</a>
 			  <a href="#/event/pacientes" class="item" menu-close>PACIENTES</a>
               <a href="#/event/attendees" class="item" menu-close>CITAS</a>
 			  <a href="#/event/attendees" class="item" menu-close>PAGOS</a>
-			  
-			 
-			  
+
+
+
             </ul>
           </ion-content>
         </ion-side-menu>
@@ -82,36 +83,31 @@
     <script id="templates/inicio.html" type="text/ng-template">
       <ion-view view-title="DR OFFICE">
         <ion-content class="padding">
-		
+
 			<iframe src="http://www.cloudsyspy.tk/ionic/tabbedSlideBox/slidingContent.html#/" style="width: 100%; height:90vh">
-			
-			
+
+
         </ion-content>
       </ion-view>
     </script>
 
     <script id="templates/personas.html" type="text/ng-template" >
-	
+
       <ion-view view-title="NUEVA PERSONA">
         <ion-content class="padding">
-		
-		
-		
-			<iframe src="app/personas.php" style="width: 100%; height:90vh">			 
+
+
+
+			<iframe src="../app/personas.php" style="width: 100%; height:90vh">
 
         </ion-content>
       </ion-view>
     </script>
 
- 	    
+
 
   </body>
 </html>
 
- 
-<script  src="js/index.js"></script>
 
-
-
-
-
+<script  src="../js/index.js"></script>
