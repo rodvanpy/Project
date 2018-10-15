@@ -24,59 +24,19 @@
     }),
 
 		$("#list_records").jqGrid({
-			url: "personasGridData.php",
+			url: "roleGridData.php",
 			datatype: "json",
 			mtype: "GET",
-			colNames: ["Id", "Nombre", "Documento", "Usuario", "Clave", "Rol", "Telefono", "Sexo", "Fecha Nacimiento", "Email", "Pais"],
+			colNames: ["Id", "Nombre", "Descripcion"],
 			colModel: [
-				{ name: "id_persona",align:"right"},
+				{ name: "id_rol",align:"right"},
 				{ name: "nombre", editable:true},
-				{ name: "documento", editable:true},
-				{ name: "usuario", editable:true},
-				{ name: "clave", editable:true},
-				{ name: "rol", editable:true,edittype:'select',
-                editoptions: {
-                    dataUrl: 'rolesList.php',
-                    buildSelect: function(resp) {
-                        var sel = '<select>';
-                        sel += '<option value="">Seleccione la opcion</option>';
-                        var obj = $.parseJSON(resp);
-//                        var sel_id = $(grid_selector).jqGrid('getGridParam', 'selrow');
-//                        var value = $(grid_selector).jqGrid('getCell',sel_id ,'tipo.id');
-
-                        $.each(obj.rows, function() {
-                            sel += '<option value="' + this['id_rol'] + '">' + this['nombre'] + '</option>'; // label and value are returned from Java layer
-                        });
-                        sel += '</select>';
-                        return sel;
-                    }
-                }},
-				{ name: "telefono", editable:true},
-				{ name: "sexo", editable:true,edittype:'select',editoptions:{value:"FEMENINO:FEMENINO;MASCULINO:MASCULINO"}},
-				{ name: "fecha_nac", editable:true},
-				{ name: "email", editable:true},
-				{ name: "pais", editable:true,edittype:'select',
-                editoptions: {
-                    dataUrl: 'paises.php',
-                    buildSelect: function(resp) {
-                        var sel = '<select>';
-                        sel += '<option value="">Seleccione la opcion</option>';
-                        var obj = $.parseJSON(resp);
-//                        var sel_id = $(grid_selector).jqGrid('getGridParam', 'selrow');
-//                        var value = $(grid_selector).jqGrid('getCell',sel_id ,'tipo.id');
-
-                        $.each(obj.rows, function() {
-                            sel += '<option value="' + this['id_pais'] + '">' + this['descripcion'] + '</option>'; // label and value are returned from Java layer
-                        });
-                        sel += '</select>';
-                        return sel;
-                    }
-                }}
+				{ name: "descripcion", editable:true}
 			],
 			pager: "#perpage",
 			rowNum: 10,
 			rowList: [10,20],
-			sortname: "id_persona",
+			sortname: "id_rol",
 			sortorder: "asc",
 			height: 700,
 			width: ($(".scroll").width() - 1000),
@@ -88,7 +48,6 @@
 			//shrinkToFit: false,
 			viewrecords: true,
 			gridview: true,
-			editurl: "guardar_persona.php",
 			caption: ""
 		});
 		$(window).triggerHandler('resize.jqGrid');

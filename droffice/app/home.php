@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<?php include("sesion.php");?>
 <html ng-app="ionicApp" lang="en">
 <head>
 
@@ -19,15 +19,9 @@
 	<script src="../js/fullscreen.js"></script>
 	<script src="../js/ionic.bundle.js"></script>
 
-../
 	<link rel="stylesheet" href="../css/tabSlideBox.css">
 	<link rel="stylesheet" href="../css/ionic.css">
 	<link rel="stylesheet" href="../css/style.css">
-
-
-
-
-
 
   </head>
 
@@ -64,13 +58,25 @@
           <ion-content>
             <ul class="list">
               <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
-              <a href="#/event/inicio" class="item" menu-close>INCIO</a>
-							<a href="#/event/inicio" class="item" menu-close>ROLES</a>
-			  <a href="#/event/personas" class="item" menu-close>PERSONAS</a>
-			  <a href="#/event/pacientes" class="item" menu-close>PACIENTES</a>
-              <a href="#/event/attendees" class="item" menu-close>CITAS</a>
-			  <a href="#/event/attendees" class="item" menu-close>PAGOS</a>
 
+							<?php
+                if($_SESSION["id_rol"]=='1') {
+	            ?>
+							<a href="#/event/roles" class="item" menu-close>ROLES</a>
+						  <a href="#/event/personas" class="item" menu-close>PERSONAS</a>
+							<?php
+	                }
+	            ?>
+							<?php
+                if($_SESSION["id_rol"]!='1') {
+	            ?>
+								<a href="#/event/inicio" class="item" menu-close>INCIO</a>
+		  					<a href="#/event/pacientes" class="item" menu-close>PACIENTES</a>
+            		<a href="#/event/attendees" class="item" menu-close>CITAS</a>
+		  					<a href="#/event/attendees" class="item" menu-close>PAGOS</a>
+							<?php
+	                }
+	            ?>
 
 
             </ul>
@@ -99,6 +105,19 @@
 
 
 			<iframe src="../app/personas.php" style="width: 100%; height:90vh">
+
+        </ion-content>
+      </ion-view>
+    </script>
+
+		<script id="templates/roles.html" type="text/ng-template" >
+
+      <ion-view view-title="ROLES">
+        <ion-content class="padding">
+
+
+
+			<iframe src="../app/roles.php" style="width: 100%; height:90vh">
 
         </ion-content>
       </ion-view>

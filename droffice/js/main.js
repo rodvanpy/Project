@@ -14,7 +14,7 @@ jQuery(document).on('submit','#formLg',function(event){
                 console.log(respuesta);
                 if (!respuesta.error) {
                   if (respuesta.id_rol=='1') {
-                    location='app/home.html';
+                    location='app/home.php';
                   }else if (respuesta.tipo=='Usuario') {
                     location='app/Usuario/usuario.php';
                   }

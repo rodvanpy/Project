@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Login con PHP + MySQL + JQuery</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel='stylesheet' type='text/css' href='../css/jquery-ui.css' />
+    <link rel='stylesheet' type='text/css' href='../css/ui-jqgrid.css' />
   </head>
   <body>
     <div class="error">

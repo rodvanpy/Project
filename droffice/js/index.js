@@ -20,16 +20,27 @@ angular.module('ionicApp', ['ionic'])
       url: "/personas",
       views: {
          'menuContent' :{
-          templateUrl: "templates/personas.html"	  
+          templateUrl: "templates/personas.html"
         }
-       
+
       }
 
-		
-		
+
+
+    })
+    .state('eventmenu.roles',{
+      url: "/roles",
+      views: {
+         'menuContent' :{
+          templateUrl: "templates/roles.html"
+        }
+
+      }
+
+
+
     })
 
-  
+
   $urlRouterProvider.otherwise("/event/inicio");
 })
-
