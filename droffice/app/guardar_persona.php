@@ -22,11 +22,10 @@ if($oper == "edit"){
   $result = mysqli_query($conn, $SQL ) or die("Couldn't execute query.".mysqli_error($conn));
 
   if ($result){
-
-  	$datos[] = array('respuesta' => '1');
+    $datos = json_encode(array('error'=>false,'mensaje'=>'El Usuario '.$usuario.' se modifico correctamente.'));
   }else{
   	mysqli_query($conn,'rollback');
-  	$datos[] = array('respuesta' => '0');
+    $datos = json_encode(array('error'=>true,'mensaje'=>'Error al tratar de modificar el usuario '.$usuario.'.'));
   }
 
 }else{
@@ -45,10 +44,10 @@ if($oper == "edit"){
 
     $result = mysqli_query($conn, $SQL ) or die("Couldn't execute query.".mysqli_error($conn));
 
-  	$datos[] = array('respuesta' => '1');
+  	$datos = json_encode(array('error'=>false,'mensaje'=>'El Usuario '.$usuario.' se inserto correctamente.'));
   }else{
   	mysqli_query($conn,'rollback');
-  	$datos[] = array('respuesta' => '0');
+  	$datos = json_encode(array('error'=>true,'mensaje'=>'Error al tratar de insertar el usuario '.$usuario.'.'));
   }
 }
 

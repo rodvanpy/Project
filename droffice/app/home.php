@@ -63,7 +63,11 @@
                 if($_SESSION["id_rol"]=='1') {
 	            ?>
 							<a href="#/event/roles" class="item" menu-close>ROLES</a>
-						  <a href="#/event/personas" class="item" menu-close>PERSONAS</a>
+						  <a href="#/event/usuarios" class="item" menu-close>Usuarios</a>
+							<a href="#/event/paises" class="item" menu-close>Paises</a>
+							<a href="#/event/tipos-citas" class="item" menu-close>Tipos Citas</a>
+							<a href="#/event/estados-citas" class="item" menu-close>Estados Citas</a>
+							<a href="#/event/especialidades" class="item" menu-close>Especialidades</a>
 							<?php
 	                }
 	            ?>
@@ -117,7 +121,59 @@
 
 
 
-			<iframe src="../app/roles.php" style="width: 100%; height:90vh">
+			<iframe src="../app/roles.php" class="content-wrapper" style="width: 100%; height:90vh">
+
+        </ion-content>
+      </ion-view>
+    </script>
+
+		<script id="templates/paises.html" type="text/ng-template" >
+
+      <ion-view view-title="ROLES">
+        <ion-content class="padding">
+
+
+
+			<iframe src="../app/paises.php" class="content-wrapper" style="width: 100%; height:90vh">
+
+        </ion-content>
+      </ion-view>
+    </script>
+
+		<script id="templates/tiposCitas.html" type="text/ng-template" >
+
+      <ion-view view-title="ROLES">
+        <ion-content class="padding">
+
+
+
+			<iframe src="../app/tiposCitas.php" class="content-wrapper" style="width: 100%; height:90vh">
+
+        </ion-content>
+      </ion-view>
+    </script>
+
+		<script id="templates/estadosCitas.html" type="text/ng-template" >
+
+      <ion-view view-title="ROLES">
+        <ion-content class="padding">
+
+
+
+			<iframe src="../app/estadosCitas.php" class="content-wrapper" style="width: 100%; height:90vh">
+
+        </ion-content>
+      </ion-view>
+    </script>
+
+		<script id="templates/especialidades.html" type="text/ng-template" >
+
+      <ion-view view-title="ROLES">
+        <ion-content class="padding">
+
+
+
+			<iframe src="../app/especialidades.php" class="content-wrapper" style="width: 100%; height:90vh">
 
         </ion-content>
       </ion-view>

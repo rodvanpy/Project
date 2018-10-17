@@ -16,8 +16,8 @@ angular.module('ionicApp', ['ionic'])
         }
       }
     })
-    .state('eventmenu.personas',{
-      url: "/personas",
+    .state('eventmenu.usuarios',{
+      url: "/usuarios",
       views: {
          'menuContent' :{
           templateUrl: "templates/personas.html"
@@ -36,9 +36,42 @@ angular.module('ionicApp', ['ionic'])
         }
 
       }
+    })
+    .state('eventmenu.paises',{
+      url: "/paises",
+      views: {
+         'menuContent' :{
+          templateUrl: "templates/paises.html"
+        }
 
+      }
+    })
+    .state('eventmenu.tipos-citas',{
+      url: "/tipos-citas",
+      views: {
+         'menuContent' :{
+          templateUrl: "templates/tiposCitas.html"
+        }
 
+      }
+    })
+    .state('eventmenu.estados-citas',{
+      url: "/estados-citas",
+      views: {
+         'menuContent' :{
+          templateUrl: "templates/estadosCitas.html"
+        }
 
+      }
+    })
+    .state('eventmenu.especialidades',{
+      url: "/especialidades",
+      views: {
+         'menuContent' :{
+          templateUrl: "templates/especialidades.html"
+        }
+
+      }
     })
 
 

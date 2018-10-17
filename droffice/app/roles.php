@@ -10,20 +10,59 @@
 	<script src="../js/jquery-3.3.1.min.js"></script>
 
 	<script type='text/javascript' src='http://www.trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js'></script>
-  <script type='text/javascript' src='http://www.trirand.com/blog/jqgrid/js/jquery.jqGrid.js'></script>
+  <script type='text/javascript' src="../js/jquery.jqGrid.min.js"></script>
 
 	<script>
 
 	$(document).ready(function () {
 
-		$(window).on('resize.jqGrid', function() {
+		var grid_selector = "#grid-table";
+		var pager_selector = "#grid-pager";
 
-            $("#list_records").jqGrid('setGridWidth', $(".content").width());
+		//resize to fit page size
+    $(window).on('resize.jqGrid', function () {+
+			console.log($(".content-wrapper").height());
+				setTimeout(function () {
+        	$(grid_selector).jqGrid('setGridWidth', $(".content").width()-3);
+					$(grid_selector).jqGrid('setGridHeight', $(".content").height());
+				}, 0);
 
 
-    }),
+    });
 
-		$("#list_records").jqGrid({
+//     $('#modal').on('shown.bs.modal', function () {
+//         console.log($(window).width());
+//         $(grid_modal).jqGrid('setGridWidth', $(window).width());
+//     });
+
+    //resize on sidebar collapse/expand
+    var parent_column = $(grid_selector).closest('[class*="col-"]');
+    $(document).on('settings.ace.jqGrid', function (ev, event_name, collapsed) {
+        if (event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed') {
+            //setTimeout is for webkit only to give time for DOM changes and then redraw!!!
+            setTimeout(function () {
+                $(grid_selector).jqGrid('setGridWidth', parent_column.width());
+            }, 0);
+        }
+    });
+
+    $(document).on('expanded.pushMenu', function (ev, event_name, collapsed) {
+        if ($(window).width() > (768 - 1)) {
+            setTimeout(function () {
+                $(grid_selector).jqGrid('setGridWidth', $(".scroll-content").width() - 180);
+            }, 0);
+        }
+    });
+
+    $(document).on('collapsed.pushMenu', function (ev, event_name, collapsed) {
+        if ($(window).width() > (768 - 1)) {
+            setTimeout(function () {
+                $(grid_selector).jqGrid('setGridWidth', $(".scroll-content").width() + 180);
+            }, 0);
+        }
+    });
+
+		$(grid_selector).jqGrid({
 			url: "roleGridData.php",
 			datatype: "json",
 			mtype: "GET",
@@ -33,13 +72,13 @@
 				{ name: "nombre", editable:true},
 				{ name: "descripcion", editable:true}
 			],
-			pager: "#perpage",
+			pager: pager_selector,
 			rowNum: 10,
 			rowList: [10,20],
 			sortname: "id_rol",
 			sortorder: "asc",
-			height: 700,
-			width: ($(".scroll").width() - 1000),
+			height: $(".content-wrapper").height(),
+			width: ($(".scroll-content").width()),
       hidegrid: false,
       rownumbers: true,
 			//height: null,
@@ -48,17 +87,17 @@
 			//shrinkToFit: false,
 			viewrecords: true,
 			gridview: true,
-			caption: ""
+			caption: '<span style="font-size:15px">Lista de Roles</span>'
 		});
 		$(window).triggerHandler('resize.jqGrid');
 		//navButtons
-			$("#list_records").jqGrid('navGrid',"#perpage",
+			$(grid_selector).jqGrid('navGrid',pager_selector,
 					{ 	//navbar options
-						edit: true,
+						edit: false,
 						editicon : 'fa fa-heart',
-						add: true,
+						add: false,
 						addicon : 'ace-icon fa fa-plus-circle purple',
-						del: true,
+						del: false,
 						delicon : 'ace-icon fa fa-trash-o red',
 						search: false,
 						searchicon : 'ace-icon fa fa-search orange',
@@ -136,12 +175,12 @@
 				}
 	});
 	</script>
-	<section class="content">
+	<section class="content" style="width: 100%; height:90vh">
     <div class="row">
         <div class="col-xs-12">
 
-						<table id="list_records" style="width: 100%;"><tr><td></td></tr></table>
-						<div id="perpage"></div>
+						<table id="grid-table" style="width: 100%;"><tr><td></td></tr></table>
+						<div id="grid-pager"></div>
 
         </div>
     </div>
