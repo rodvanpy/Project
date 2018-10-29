@@ -9,10 +9,7 @@
 
 	<script src="../js/jquery-3.3.1.min.js"></script>
 
-	<script type='text/javascript' src='http://www.trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js'></script>
-
-
-
+	<script type='text/javascript' src="../js/grid.locale-en.js"></script>
 	<script type='text/javascript' src="../js/jquery.jqGrid.min.js"></script>
 
 

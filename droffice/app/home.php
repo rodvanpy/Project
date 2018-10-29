@@ -68,13 +68,16 @@
 							<a href="#/event/tipos-citas" class="item" menu-close>Tipos Citas</a>
 							<a href="#/event/estados-citas" class="item" menu-close>Estados Citas</a>
 							<a href="#/event/especialidades" class="item" menu-close>Especialidades</a>
+							<a href="#/event/metodos-pago" class="item" menu-close>Metodos Pago</a>
 							<?php
 	                }
 	            ?>
 							<?php
-                if($_SESSION["id_rol"]!='1') {
+                if($_SESSION["id_rol"]=='3') {
 	            ?>
 								<a href="#/event/inicio" class="item" menu-close>INCIO</a>
+								<a href="#/event/hospitales" class="item" menu-close>HOSPITALES</a>
+								<a href="#/event/medicos" class="item" menu-close>MEDICOS</a>
 		  					<a href="#/event/pacientes" class="item" menu-close>PACIENTES</a>
             		<a href="#/event/attendees" class="item" menu-close>CITAS</a>
 		  					<a href="#/event/attendees" class="item" menu-close>PAGOS</a>
